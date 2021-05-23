@@ -18,11 +18,9 @@ const request = ({ url, method, data }, callback) => {
     if(data) xhr.send(JSON.stringify(data))
     else xhr.send()
 }
-let loading = true
 let people = []
 window.onload = fetchPeople()
 function fetchPeople() {
-    loading = true
     request({
         url: `https://simple-nodejs-crud.herokuapp.com/api/people`,
         method: "GET"
@@ -44,7 +42,6 @@ function fetchPeople() {
                 row.append(actions)
                 table.append(row)
             });
-            loading = false
         }
         else console.log("ERROR: ", err)
     })
